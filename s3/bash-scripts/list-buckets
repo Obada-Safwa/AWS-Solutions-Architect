@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+BUCKETS=$(aws s3api list-buckets | jq '.Buckets | sort_by(.CreationDate) | reverse')
+
+TOTAL=$(echo "$BUCKETS" | jq 'length')
+
+echo "$BUCKETS" | jq -r '.[0:5][] | "\(.Name) — \(.CreationDate)"'
+
+if [ "$TOTAL" -gt 5 ]; then
+  echo "..."
+fi

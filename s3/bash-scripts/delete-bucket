@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo "==Delete Bucket=="
+
+if [ -z "$1" ]; then
+  echo "Add a Bucket Name"
+  exit 1
+fi
+
+BUCKET_NAME=$1
+
+aws s3api delete-bucket \
+  --bucket "$BUCKET_NAME"

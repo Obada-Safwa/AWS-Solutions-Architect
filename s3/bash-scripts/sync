@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+OUTPUT_DIR="/tmp/output_dir"
+
+mkdir -p "$OUTPUT_DIR"
+
+for i in {1..5}; do
+  touch "$OUTPUT_DIR/file_$i.txt"
+done
+
+echo "Created 5 files in $OUTPUT_DIR"
+ls "$OUTPUT_DIR"

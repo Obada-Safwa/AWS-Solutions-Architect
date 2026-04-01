@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo "==Create Bucket=="
+
+if [ -z "$1" ]; then
+  echo "Add a Bucket Name"
+  exit 1
+fi
+
+BUCKET_NAME=$1
+
+aws s3api create-bucket \
+  --bucket "$BUCKET_NAME" \
+  --create-bucket-configuration="LocationConstraint=eu-central-1" \
+  --query Location \
+  --output text
