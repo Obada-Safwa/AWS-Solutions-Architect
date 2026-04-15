@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+aws ec2 create-vpc \
+--cidr-block 10.0.0.0/16 
+
+aws ec2 create-subnet \
+--vpc-id "vpc-092c86649f4acfc37" \
+--cidr-block 10.0.0.0/24
+
+
+aws ec2 create-internet-gateway
+
+
+aws ec2 attach-internet-gateway \
+--internet-gateway-id "igw-0eec0ff988f30594a" \
+--vpc-id "vpc-092c86649f4acfc37"
+
+
+# explicitly associate subnet
+
+aws ec2 associate-route-table \
+--route-table-id "rtb-023bb11a905d63b6b" \
+--subnet-id "subnet-08310e4debc05cde0"
